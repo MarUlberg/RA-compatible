@@ -65,8 +65,33 @@ const platforms = [
     keys: ["nintendo 64"] },
 
   { name: "GameCube", file: "ra-nintendo-ngc-files.json",
-    keys: ["gamecube"] }
+    keys: ["gamecube"] },
+	
+  { name: "3DO Interactive Multiplayer", file: "ra-3do-interactive-multiplayer-files.json",
+    keys: ["panasonic - 3do", "panasonic_3do_interactive_multiplayer", "3do interactive multiplayer", "3do-chd", "3do-chd-zstd"] },
+
+  { name: "Atari 2600", file: "ra-atari-2600-files.json",
+    keys: ["atari - 2600", "nointro.atari-2600", "a2600", "2600 vcs"] },
+
+  { name: "Atari 7800", file: "ra-atari-7800-files.json",
+    keys: ["atari - 7800", "nointro.atari-7800", "a7800"] },
+
+  { name: "Atari Jaguar CD", file: "ra-atari-jaguar-cd-files.json",
+    keys: ["atari - jaguar cd interactive multimedia system", "atari_jaguar-cd", "jaguar cd", "jagcd", "jagcd-chd", "jagcd-chd-zstd"] },
+
+  { name: "Atari Jaguar", file: "ra-atari-jaguar-files.json",
+    keys: ["atari - jaguar", "jaguar cart", "jaguar rom"] },
+
+  { name: "Neo Geo CD", file: "ra-neogeo-cd-files.json",
+    keys: ["snk - neo geo cd", "snk_neo_geo", "neo geo cd", "ngcd", "ngcd-chd", "ngcd-chd-zstd"] },
+
+  { name: "PC Engine CD / TurboGrafx CD", file: "ra-pc-engine-cd-turbografx-cd-files.json",
+    keys: ["nec - pc engine cd & turbografx cd", "nec_pc-engine-cd_turbografx-cd", "pc engine cd", "turbografx cd", "pcecd", "pcecd-chd", "pcecd-chd-zstd"] },
+
+  { name: "PC Engine / TurboGrafx-16", file: "ra-pc-engine-turbografx-16-files.json",
+    keys: ["nec - pc engine - turbografx-16", "nointro.tg-16", "turbografx-16", "tg-16", "pc engine - turbografx-16"] }
 ];
+
 
 // ===== DETECT PLATFORM =====
 

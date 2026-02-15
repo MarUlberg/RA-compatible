@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "RA compatible",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Marks ROMs compatible with RetroAchievements on Myrient and archive.org",
 
   "icons": {
@@ -55,7 +55,16 @@
         "ra-nintendo-snes-files.json",
         "ra-nintendo-vb-files.json",
         "ra-nintendo-n64-files.json",
-        "ra-nintendo-ngc-files.json"
+        "ra-nintendo-ngc-files.json",
+
+		"ra-3do-interactive-multiplayer-files.json",
+		"ra-atari-2600-files.json",
+		"ra-atari-7800-files.json",
+		"ra-atari-jaguar-files.json",
+		"ra-atari-jaguar-cd-files.json",
+		"ra-neogeo-cd-files.json",
+		"ra-pc-engine-cd-turbografx-cd-files.json",
+		"ra-pc-engine-turbografx-16-files.json"
       ],
       "matches": [
         "*://myrient.erista.me/*",
