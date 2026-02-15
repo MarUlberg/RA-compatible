@@ -1,0 +1,66 @@
+{
+  "manifest_version": 3,
+  "name": "RA compatible",
+  "version": "1.0",
+  "description": "Marks ROMs compatible with RetroAchievements on Myrient and archive.org",
+
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "iconx128.png"
+  },
+
+  "permissions": [],
+
+  "host_permissions": [
+    "*://myrient.erista.me/*",
+    "*://archive.org/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://myrient.erista.me/*",
+        "*://archive.org/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "icon.png",
+
+        "ra-sega-gamegear-files.json",
+        "ra-sega-mastersystem-files.json",
+        "ra-sega-megadrive-files.json",
+        "ra-sega-cd-files.json",
+        "ra-sega-32x-files.json",
+        "ra-sega-saturn-files.json",
+        "ra-sega-dreamcast-files.json",
+
+        "ra-sony-playstation-files.json",
+        "ra-sony-playstation2-files.json",
+        "ra-sony-playstationportable-files.json",
+
+        "ra-nintendo-gb-files.json",
+        "ra-nintendo-gbc-files.json",
+        "ra-nintendo-gba-files.json",
+        "ra-nintendo-ds-files.json",
+        "ra-nintendo-dsi-files.json",
+        "ra-nintendo-nes-files.json",
+        "ra-nintendo-snes-files.json",
+        "ra-nintendo-vb-files.json",
+        "ra-nintendo-n64-files.json",
+        "ra-nintendo-ngc-files.json"
+      ],
+      "matches": [
+        "*://myrient.erista.me/*",
+        "*://archive.org/*"
+      ]
+    }
+  ]
+}
