@@ -7,7 +7,7 @@ console.log("URL:", url);
 // ===== PLATFORM TABLE =====
 const platforms = [
 
-  { name: "Dreamcast", file: "ra-sega-dreamcast-files.json",
+  { name: "Sega Dreamcast", file: "ra-sega-dreamcast-files.json",
     keys: ["dreamcast"],
     breadcrumbKeys: ["dreamcast"],
 		myrientFolder: "Sega - Dreamcast" },
@@ -22,37 +22,37 @@ const platforms = [
     breadcrumbKeys: ["32x"],
 		myrientFolder: "Sega - 32X" },
 
-  { name: "Sega CD", file: "ra-sega-cd-files.json",
+  { name: "Sega Mega CD", file: "ra-sega-cd-files.json",
     keys: ["mega cd", "sega cd"],
     breadcrumbKeys: ["sega cd"],
 		myrientFolder: "Sega - Mega CD & Sega CD" },
 		
-  { name: "Genesis", file: "ra-sega-megadrive-files.json",
+  { name: "Sega Megadrive / Genesis", file: "ra-sega-megadrive-files.json",
     keys: ["mega drive", "genesis", "nointro.md"],
     breadcrumbKeys: ["genesis/mega drive"],
     myrientFolder: "Sega - Mega Drive - Genesis" },
 
-  { name: "Master System", file: "ra-sega-mastersystem-files.json",
+  { name: "Sega Master System", file: "ra-sega-mastersystem-files.json",
     keys: ["master system", "mark iii", "nointro.ms-mkiii"],
     breadcrumbKeys: ["master system"],
     myrientFolder: "Sega - Master System - Mark III" },
 
-  { name: "Game Gear", file: "ra-sega-gamegear-files.json",
+  { name: "Sega Game Gear", file: "ra-sega-gamegear-files.json",
     keys: ["game gear", "nointro.gg"],
     breadcrumbKeys: ["game gear"],
     myrientFolder: "Sega - Game Gear" },
 
-  { name: "PlayStation Portable", file: "ra-sony-playstationportable-files.json",
+  { name: "Sony PlayStation Portable", file: "ra-sony-playstationportable-files.json",
     keys: ["playstation portable", "psp"],
     breadcrumbKeys: ["playstation portable"],
 		myrientFolder: "Sony - PlayStation Portable" },
 
-  { name: "PlayStation 2", file: "ra-sony-playstation2-files.json",
+  { name: "Sony PlayStation 2", file: "ra-sony-playstation2-files.json",
     keys: ["playstation 2", "ps2"],
     breadcrumbKeys: ["playstation 2"],
 		myrientFolder: "Sony - PlayStation 2" },
 		
-  { name: "PlayStation", file: "ra-sony-playstation-files.json",
+  { name: "Sony PlayStation", file: "ra-sony-playstation-files.json",
     keys: ["sony - playstation", "psx"],
     breadcrumbKeys: ["playstation"],
 		myrientFolder: "Sony - PlayStation" },
@@ -67,22 +67,22 @@ const platforms = [
     breadcrumbKeys: ["nintendo ds"],
     myrientFolder: "Nintendo - Nintendo DS (Decrypted)" },
 
-  { name: "Game Boy Advance", file: "ra-nintendo-gba-files.json",
+  { name: "Nintendo Game Boy Advance", file: "ra-nintendo-gba-files.json",
     keys: ["game boy advance"],
     breadcrumbKeys: ["game boy advance"],
     myrientFolder: "Nintendo - Game Boy Advance" },
 
-  { name: "Game Boy Color", file: "ra-nintendo-gbc-files.json",
+  { name: "Nintendo Game Boy Color", file: "ra-nintendo-gbc-files.json",
     keys: ["game boy color"],
     breadcrumbKeys: ["game boy color"],
     myrientFolder: "Nintendo - Game Boy Color" },
 
-  { name: "Game Boy", file: "ra-nintendo-gb-files.json",
+  { name: "Nintendo Game Boy", file: "ra-nintendo-gb-files.json",
     keys: ["nintendo - game boy/"],
     breadcrumbKeys: ["game boy"],
     myrientFolder: "Nintendo - Game Boy" },
 
-  { name: "GameCube", file: "ra-nintendo-ngc-files.json",
+  { name: "Nintendo GameCube", file: "ra-nintendo-ngc-files.json",
     keys: ["gamecube"],
     breadcrumbKeys: ["gamecube"],
 		myrientFolder: "Nintendo - GameCube - NKit RVZ [zstd-19-128k]" },
@@ -92,17 +92,17 @@ const platforms = [
     breadcrumbKeys: ["nintendo 64"],
     myrientFolder: "Nintendo - Nintendo 64 (BigEndian)" },
 
-  { name: "Virtual Boy", file: "ra-nintendo-vb-files.json",
+  { name: "Nintendo Virtual Boy", file: "ra-nintendo-vb-files.json",
     keys: ["virtual boy"],
     breadcrumbKeys: ["virtual boy"],
     myrientFolder: "Nintendo - Virtual Boy" },
 		
-  { name: "Super Nintendo", file: "ra-nintendo-snes-files.json",
+  { name: "Super Nintendo Entertainment System", file: "ra-nintendo-snes-files.json",
     keys: ["super nintendo"],
     breadcrumbKeys: ["snes/super famicom"],
     myrientFolder: "Nintendo - Super Nintendo Entertainment System" },
 		
-  { name: "Nintendo", file: "ra-nintendo-nes-files.json",
+  { name: "Nintendo Entertainment System", file: "ra-nintendo-nes-files.json",
     keys: ["nintendo entertainment system"],
     breadcrumbKeys: ["nes/famicom"],
     myrientFolder: "Nintendo - Nintendo Entertainment System (Headered)" },
