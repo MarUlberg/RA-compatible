@@ -46,11 +46,11 @@ const platforms = [
   { name: "Game Boy Advance", file: "ra-nintendo-gba-files.json",
     keys: ["game boy advance"] },
 
-  { name: "Nintendo DS", file: "ra-nintendo-ds-files.json",
-    keys: ["nintendo ds"] },
-
   { name: "Nintendo DSi", file: "ra-nintendo-dsi-files.json",
     keys: ["nintendo dsi"] },
+
+  { name: "Nintendo DS", file: "ra-nintendo-ds-files.json",
+    keys: ["nintendo ds"] },
 
   { name: "Nintendo", file: "ra-nintendo-nes-files.json",
     keys: ["nintendo entertainment system"] },
