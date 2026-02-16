@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "RA compatible",
-  "version": "1.11",
-  "description": "Marks ROMs compatible with RetroAchievements on Myrient and archive.org",
+  "version": "1.2",
+  "description": "Marks ROMs compatible with RetroAchievements on Myrient, archive.org and retroachievements.org",
 
   "icons": {
     "16": "icon.png",
@@ -15,14 +15,16 @@
 
   "host_permissions": [
     "*://myrient.erista.me/*",
-    "*://archive.org/*"
+    "*://archive.org/*",
+    "*://retroachievements.org/*"
   ],
 
   "content_scripts": [
     {
       "matches": [
         "*://myrient.erista.me/*",
-        "*://archive.org/*"
+        "*://archive.org/*",
+        "*://retroachievements.org/*"
       ],
       "js": ["content.js"],
       "run_at": "document_idle"
