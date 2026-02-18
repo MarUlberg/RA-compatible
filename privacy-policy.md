@@ -16,6 +16,8 @@ myrient.erista.me
 
 archive.org
 
+retroachievements.org
+
 This access is used solely to read ROM filenames on those pages and compare them with locally stored compatibility lists in order to display an icon.
 
 Remote Code
