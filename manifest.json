@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "RetroAchievements compatible",
   "version": "1.2",
-  "description": "Marks ROMs compatible with RetroAchievements on Myrient, archive.org and retroachievements.org",
+  "description": "Marks ROMs compatible with RetroAchievements on Myrient and archive.org.",
 
   "icons": {
     "16": "icon.png",

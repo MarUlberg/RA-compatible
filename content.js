@@ -317,12 +317,23 @@ function processRAHashesPage() {
 			url = folderUrl;
 		}
 
-    const a = document.createElement("a");
-    a.href = url;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
-    a.innerText = text;
-    a.style.color = "#6cf";
+		const a = document.createElement("a");
+		a.href = url;
+		a.target = "_blank";
+		a.rel = "noopener noreferrer";
+		a.innerText = text;
+		a.style.color = "#6cf";
+
+		// Copy ROM name when clicking
+		a.addEventListener("click", () => {
+			navigator.clipboard.writeText(text).then(() => {
+				console.log("Copied ROM name:", text);
+
+				// small visual feedback
+				a.style.color = "#0f0";
+				setTimeout(() => a.style.color = "#6cf", 400);
+			});
+		});
 
     el.dataset.raLinked = "1";
     el.innerText = "";
