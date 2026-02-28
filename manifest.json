@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "RetroAchievements compatible",
-  "version": "1.2",
+  "version": "2.0",
   "description": "Marks ROMs compatible with RetroAchievements on Myrient and archive.org.",
 
   "icons": {
@@ -48,6 +48,7 @@
         "ra-sony-playstation2-files.json",
         "ra-sony-playstation-files.json",
 
+        "ra-nintendo-3ds-files.json",
         "ra-nintendo-dsi-files.json",
         "ra-nintendo-ds-files.json",
         "ra-nintendo-gba-files.json",

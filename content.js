@@ -57,6 +57,11 @@ const platforms = [
     breadcrumbKeys: ["playstation"],
     archive: "Redump", myrientFolder: "Sony - PlayStation" },
 
+  { name: "Nintendo 3DS", file: "ra-nintendo-3ds-files.json",
+    keys: ["nintendo 3ds"],
+    breadcrumbKeys: ["nintendo 3ds"],
+    archive: "No-Intro", myrientFolder: "Nintendo - Nintendo 3DS (Decrypted)" },
+
   { name: "Nintendo DSi", file: "ra-nintendo-dsi-files.json",
     keys: ["nintendo dsi"],
     breadcrumbKeys: ["dsi"],
@@ -175,6 +180,15 @@ const directLinkPlatforms = new Set([
   "PC Engine / TurboGrafx-16"
 ]);
 
+// Remove known ROM/archive extensions from a filename
+function stripRomExtension(name) {
+  if (!name) return name;
+
+  return name.replace(
+    /\.(zip|7z|rar|gb|gbc|gba|nds|3ds|nes|fds|unf|sfc|smc|vb|fig|swc|n64|z64|v64|gg|sms|md|gen|32x|pce|sgx|cue|bin|iso|img|ccd|sub|chd|rvz|gcm|ciso|wbfs|pbp|elf|dol)$/i,
+    ""
+  );
+}
 
 // ===== RETROACHIEVEMENTS HASH PAGE SUPPORT =====
 
@@ -271,8 +285,7 @@ function processRAHashesPage() {
 
     let base = text;
 
-		base = base.replace(/\.(zip|7z|rar|gb|gbc|gba|nds|3ds|nes|fds|unf|sfc|smc|vb|fig|swc|n64|z64|v64|gg|sms|md|gen|32x|pce|sgx|cue|bin|iso|img|ccd|sub|chd|rvz|gcm|ciso|wbfs|pbp|elf|dol)$/i, "");
-
+		base = stripRomExtension(base);
 
     base = base.replace(/track\s*\d+/i, "").trim();
     if (!base || base.length < 3) return;
@@ -326,10 +339,9 @@ function processRAHashesPage() {
 
 		// Copy ROM name when clicking
 		a.addEventListener("click", () => {
-			navigator.clipboard.writeText(text).then(() => {
-				console.log("Copied ROM name:", text);
-
-				// small visual feedback
+			const clean = stripRomExtension(text);
+			navigator.clipboard.writeText(clean).then(() => {
+				console.log("Copied ROM name:", clean);
 				a.style.color = "#0f0";
 				setTimeout(() => a.style.color = "#6cf", 400);
 			});
@@ -377,7 +389,17 @@ function startRAWatcher() {
   setTimeout(processRAHashesPage, 500);
 }
 
-window.addEventListener("load", startRAWatcher);
+let started = false;
+
+function safeStart() {
+  if (started) return;
+  started = true;
+  startRAWatcher();
+}
+
+safeStart();
+document.addEventListener("DOMContentLoaded", safeStart);
+window.addEventListener("load", safeStart);
 
 
 // ===== DETECT PLATFORM =====
