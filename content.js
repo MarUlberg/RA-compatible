@@ -283,16 +283,15 @@ function processRAHashesPage() {
     let text = el.innerText.trim();
     if (!text) return;
 
-    let base = text;
+		let romName = text;
+		romName = stripRomExtension(romName);
 
-		base = stripRomExtension(base);
+		romName = romName.replace(/track\s*\d+/i, "").trim();
+		if (!romName || romName.length < 3) return;
 
-    base = base.replace(/track\s*\d+/i, "").trim();
-    if (!base || base.length < 3) return;
-
-    if (archive === "Redump") {
-      if (/^slus|scus|sles|track/i.test(base)) return;
-    }
+		if (archive === "Redump") {
+			if (/^slus|scus|sles|track/i.test(romName)) return;
+		}
 
     const encode = s =>
       encodeURIComponent(s)
@@ -301,8 +300,15 @@ function processRAHashesPage() {
 
 		let url;
 
+		const isMinerva = location.hostname.includes("minerva-archive.org");
+
+		const baseUrl =
+			isMinerva
+				? "https://minerva-archive.org/browse/"
+				: "https://myrient.erista.me/files/";
+
 		const folderUrl =
-			"https://myrient.erista.me/files/" +
+			baseUrl +
 			archive + "/" +
 			encode(folder) + "/";
 
@@ -315,13 +321,13 @@ function processRAHashesPage() {
 				url =
 					platform.host + "/" +
 					platform.archivePath + "/" +
-					encode(base) +
+					encode(romName) +
 					(platform.extension || ".zip");
 
 			} else {
 				url =
 					folderUrl +
-					encode(base) +
+					encode(romName) +
 					(platform.extension || ".zip");
 			}
 
@@ -407,11 +413,14 @@ window.addEventListener("load", safeStart);
 let dbFile = null;
 let consoleName = null;
 
-for (const p of platforms) {
-  if (p.keys.some(k => url.includes(k))) {
-    dbFile = p.file;
-    consoleName = p.name;
-    break;
+if (!dbFile && location.hostname.includes("minerva-archive.org")) {
+  for (const p of platforms) {
+    if (url.includes(p.myrientFolder.toLowerCase())) {
+      dbFile = p.file;
+      consoleName = p.name;
+      console.log("Minerva fallback matched:", p.name);
+      break;
+    }
   }
 }
 
@@ -433,11 +442,11 @@ if (!dbFile && !location.hostname.includes("retroachievements.org")) {
 	}
 
   // ===== LOAD RA DATABASE =====
-  fetch(chrome.runtime.getURL(dbFile))
-    .then(r => {
-      if (!r.ok) throw new Error("Missing JSON: " + dbFile);
-      return r.json();
-    })
+	fetch(chrome.runtime.getURL(dbFile))
+		.then(r => {
+			if (!r.ok) throw new Error("Missing JSON: " + dbFile);
+			return r.json();
+		})
 		.then(data => {
 
 			const supportedSet =
@@ -446,35 +455,51 @@ if (!dbFile && !location.hostname.includes("retroachievements.org")) {
 			const noachSet =
 				new Set((data.noAchievements || []).map(normalize));
 
-			document.querySelectorAll("a").forEach(link => {
+			function markLinks() {
 
-				const text = normalize(link.textContent || "");
+				document.querySelectorAll("a").forEach(link => {
 
-				if (!supportedSet.has(text) && !noachSet.has(text))
-					return;
+					const text = normalize(link.textContent || "");
 
-				if (link.dataset.raMarked) return;
-				link.dataset.raMarked = "true";
+					if (!supportedSet.has(text) && !noachSet.has(text))
+						return;
 
-				const icon = document.createElement("img");
-				icon.src = chrome.runtime.getURL("icon.png");
-				icon.style.width = "14px";
-				icon.style.height = "14px";
-				icon.style.marginLeft = "6px";
-				icon.style.verticalAlign = "middle";
+					if (link.dataset.raMarked) return;
+					link.dataset.raMarked = "true";
 
-				if (noachSet.has(text)) {
-					icon.style.filter = "grayscale(100%) brightness(120%) contrast(150%)";
-					icon.title = "RetroAchievements entry (no achievements)";
-				} else {
-					icon.title =
-						"RetroAchievements supported (" + consoleName + ")";
-				}
+					const icon = document.createElement("img");
+					icon.src = chrome.runtime.getURL("icon.png");
+					icon.style.width = "14px";
+					icon.style.height = "14px";
+					icon.style.marginLeft = "6px";
+					icon.style.verticalAlign = "middle";
 
-				link.appendChild(icon);
+					if (noachSet.has(text)) {
+						icon.style.filter = "grayscale(100%) brightness(120%) contrast(150%)";
+						icon.title = "RetroAchievements entry (no achievements)";
+					} else {
+						icon.title =
+							"RetroAchievements supported (" + consoleName + ")";
+					}
+
+					link.appendChild(icon);
+				});
+			}
+
+			// Run once immediately
+			markLinks();
+
+			// Watch for dynamically added links (Minerva fix)
+			const observer = new MutationObserver(() => {
+				markLinks();
+			});
+
+			observer.observe(document.body, {
+				childList: true,
+				subtree: true
 			});
 
 		})
-    .catch(e => console.error("RA load failed:", e));
+		.catch(e => console.error("RA load failed:", e));
 }
 

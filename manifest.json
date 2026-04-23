@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "RetroAchievements compatible",
-  "version": "2.0",
+  "version": "2.1",
   "description": "Marks ROMs compatible with RetroAchievements on Myrient and archive.org.",
 
   "icons": {
@@ -16,7 +16,8 @@
   "host_permissions": [
     "*://myrient.erista.me/*",
     "*://archive.org/*",
-    "*://retroachievements.org/*"
+    "*://retroachievements.org/*",
+    "*://minerva-archive.org/*"
   ],
 
   "content_scripts": [
@@ -24,7 +25,8 @@
       "matches": [
         "*://myrient.erista.me/*",
         "*://archive.org/*",
-        "*://retroachievements.org/*"
+        "*://retroachievements.org/*",
+        "*://minerva-archive.org/*"
       ],
       "js": ["content.js"],
       "run_at": "document_idle"
@@ -72,7 +74,8 @@
       ],
       "matches": [
         "*://myrient.erista.me/*",
-        "*://archive.org/*"
+        "*://archive.org/*",
+		"*://minerva-archive.org/*"
       ]
     }
   ]
